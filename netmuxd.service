@@ -1,0 +1,12 @@
+[Unit]
+Description = netmuxd 
+Wants = network-online.target 
+Requires = avahi-daemon.service avahi-daemon.socket
+After = network-online.target avahi-daemon.service avahi-daemon.socket 
+
+[Install]
+WantedBy = multi-user.target
+
+[Service]
+ExecStart = /home/pi/netmuxd/target/debug/netmuxd --host 0.0.0.0  
+Restart=always
